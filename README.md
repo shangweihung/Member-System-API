@@ -6,12 +6,19 @@ Use Node.js to build API for member system.
 ```bash
 npm install
 ```
+## Frameword
+Use **Express.js**
+
+## Testing
+Use [Postman](https://www.postman.com/)
+
 
 ## Functions
 (Follow the rule **Create, Read, Update, Delete**)
 * MemberShip Register
 * Member Login 
 * Update Member Infomation
+* Upload Member Profile Image
 
 ## Reference
 [[link]](https://ithelp.ithome.com.tw/articles/10195342)
