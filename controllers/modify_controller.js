@@ -3,6 +3,7 @@ const loginAction = require('../models/login_model');
 const Check = require('../service/member_check');
 const encryption = require('../models/encryption');
 const verify = require('../models/verification_model');
+const updateAction = require('../models/update_model');
 const config = require('../config/development_config');
 
 const jwt = require('jsonwebtoken');
@@ -102,8 +103,24 @@ module.exports = class Member {
                         }
                     })
                 } else {
-                    res.json({
-                        test: "token正確"
+                    const id = tokenResult;
+                
+                    // 進行加密
+                    const password = encryption(req.body.password);
+
+                    const memberUpdateData = {
+                        name: req.body.name,
+                        password: password,
+                        update_date: onTime()
+                    }
+                    updateAction(id, memberUpdateData).then(result => {
+                        res.json({
+                            result: result
+                        })
+                    }, (err) => {
+                        res.json({
+                            result: err
+                        })
                     })
                 }
             })
