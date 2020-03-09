@@ -3,7 +3,7 @@ Use Node.js to build API for member system.
 
 
 ## Build Setup
-```console
+```bash
 npm install
 ```
 
@@ -14,4 +14,4 @@ npm install
 * Update Member Infomation
 
 ## Reference
-![link](https://ithelp.ithome.com.tw/articles/10195342)
+[[link]](https://ithelp.ithome.com.tw/articles/10195342)
