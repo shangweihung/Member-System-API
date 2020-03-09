@@ -2,6 +2,7 @@ const toRegister = require('../models/register_model');
 const loginAction = require('../models/login_model');
 const Check = require('../service/member_check');
 const encryption = require('../models/encryption');
+const verify = require('../models/verification_model');
 const config = require('../config/development_config');
 
 const jwt = require('jsonwebtoken');
@@ -46,6 +47,7 @@ module.exports = class Member {
             })
         }
     }
+
     postLogin(req, res, next) {
         // 進行加密
         const password = encryption(req.body.password);
@@ -81,6 +83,31 @@ module.exports = class Member {
                 })
             }
         })
+    }
+
+    putUpdate(req, res, next) {
+        const token = req.headers['token'];
+        //確定token是否有輸入
+        if (check.checkNull(token) === true) {
+            res.json({
+                err: "請輸入token！"
+            })
+        } else if (check.checkNull(token) === false) {
+            verify(token).then(tokenResult => {
+                if (tokenResult === false ) {
+                    res.json({
+                        result: {
+                            status: "token錯誤。",
+                            err: "請重新登入。"
+                        }
+                    })
+                } else {
+                    res.json({
+                        test: "token正確"
+                    })
+                }
+            })
+        }
     }
 
 
