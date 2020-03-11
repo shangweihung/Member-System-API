@@ -7,9 +7,9 @@ Use Node.js to build API for member system.
 npm install
 ```
 ## Development Environment
-Backend: Node.js
-Backend-framework: Express
-Database: MySQL
+Backend: Node.js  
+Backend-framework: Express  
+Database: MySQL  
 
 ## Testing
 Use [Postman](https://www.postman.com/)
